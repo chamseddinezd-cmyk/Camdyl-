@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camdyl - Entreprise Spécialisée dans le Recyclage</title>
+    <style>
+      /* Variables et styles de base */
+      :root {
+        --primary: #2e7d32;
+        --primary-light: #4caf50;
+        --primary-dark: #1b5e20;
+        --secondary: #ff9800;
+        --text: #333;
+        --light: #f5f5f5;
+        --white: #ffffff;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* En-tête */
+      header {
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      .logo h1 {
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary);
+        background-color: rgba(46, 125, 50, 0.1);
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Section Hero */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #e68900;
+      }
+
+      /* Sections */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary);
+      }
+
+      /* À propos */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Services */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .service-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.1);
+      }
+
+      .service-content {
+        padding: 20px;
+      }
+
+      .service-content h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      /* Points de collecte */
+      .collect-points {
+        background-color: var(--primary-light);
+        color: var(--white);
+      }
+
+      .collect-points .section-title h2 {
+        color: var(--white);
+      }
+
+      .collect-points .section-title h2::after {
+        background-color: var(--secondary);
+      }
+
+      .points-content {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .points-text {
+        flex: 1;
+      }
+
+      .points-image {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .points-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Processus */
+      .process-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        flex-wrap: wrap;
+      }
+
+      .step {
+        text-align: center;
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+      }
+
+      .step-icon {
+        width: 80px;
+        height: 80px;
+        background-color: var(--primary-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: var(--white);
+        font-size: 2rem;
+      }
+
+      /* Contact */
+      .contact-content {
+        display: flex;
+        gap: 40px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-form {
+        flex: 1;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      /* Pied de page */
+      footer {
+        background-color: var(--primary-dark);
+        color: var(--white);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--secondary);
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--secondary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        color: var(--white);
+        transition: background-color 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          margin-top: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 5px 10px;
+        }
+
+        .about-content,
+        .points-content,
+        .contact-content {
+          flex-direction: column;
+        }
+
+        .hero h2 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- En-tête -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img src="./assets/camdyl re.jpg" alt="Logo Camdyl" />
+          <h1>Camdyl</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#points">Points de collecte</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="mobile-menu">☰</div>
+      </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero" id="accueil">
+      <div class="container">
+        <h2>Recyclons ensemble pour un avenir durable</h2>
+        <p>
+          Camdyl transforme vos déchets en ressources précieuses grâce à des
+          solutions de recyclage innovantes et responsables.
+        </p>
+        <a href="#services" class="btn">Découvrir nos services</a>
+      </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="apropos">
+      <div class="container">
+        <div class="section-title">
+          <h2>À propos de Camdyl</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Camdyl est une entreprise spécialisée dans le recyclage qui
+              s'engage pour la préservation de l'environnement. Nous proposons
+              des solutions complètes pour transformer les déchets en nouvelles
+              ressources.
+            </p>
+            <p>
+              Notre mission est de réduire l'impact environnemental des déchets
+              en offrant des services de recyclage innovants qui bénéficient à
+              la fois à nos clients et à la planète.
+            </p>
+            <p>
+              Avec des années d'expérience dans le domaine, nous avons développé
+              des processus efficaces pour le traitement de différents types de
+              matériaux, du plastique aux déchets de construction.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="./assets/recyclage_c8b98e20-2124-4f41-ab44-4cd8a1381f1c.jpg"
+              alt="Processus de recyclage"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos Services</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="./assets/recyclage-minimal-avec-des-bouteilles-en-plastique-dans-un-conteneur.jpg"
+                alt="Recyclage du plastique"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Recyclage du plastique</h3>
+              <p>
+                Nous collectons, traitons et recyclons différents types de
+                plastiques. Déposez vos plastiques dans nos points de collecte
+                et recevez des bons d'achat en échange.
+              </p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="./assets/AdobeStock_1150357276-min-scaled-e1741861985453.jpeg"
+                alt="Transformation de la laine"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Transformation de la laine</h3>
+              <p>
+                Pendant les fêtes, nous collectons la laine que nous
+                transformons en vêtements de qualité. Une solution écologique
+                pour valoriser cette ressource naturelle.
+              </p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="./assets/dechet.jpg"
+                alt="Recyclage des déchets de construction"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Recyclage des déchets de construction</h3>
+              <p>
+                Nous récupérons les matériaux de démolition, les recyclons et
+                les retournons aux entreprises de construction pour une économie
+                circulaire efficace.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Points de collecte -->
+    <section class="collect-points" id="points">
+      <div class="container">
+        <div class="section-title">
+          <h2>Points de Collecte</h2>
+        </div>
+        <div class="points-content">
+          <div class="points-text">
+            <p>
+              Nous avons installé des points de collecte dans toute la ville où
+              vous pouvez déposer vos plastiques. Ces points sont équipés de
+              conteneurs intelligents qui vous permettent de contribuer à la
+              protection de l'environnement tout en bénéficiant d'avantages.
+            </p>
+            <p>
+              Pour chaque dépôt de plastique, vous recevez un bon d'achat que
+              vous pouvez utiliser dans nos magasins partenaires. C'est notre
+              façon de vous remercier pour votre engagement écologique.
+            </p>
+            <p>
+              Utilisez notre carte interactive pour trouver le point de collecte
+              le plus proche de chez vous et commencer à recycler dès
+              aujourd'hui.
+            </p>
+            <a href="#contact" class="btn">Trouver un point de collecte</a>
+          </div>
+          <div class="points-image">
+            <img
+              src="./assets/Delta-4-1.webp"
+              alt="Point de collecte de plastique"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Processus -->
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Notre Processus</h2>
+        </div>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-icon">1</div>
+            <h3>Collecte</h3>
+            <p>
+              Nous collectons les matériaux via nos points de collecte ou
+              directement chez nos clients.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">2</div>
+            <h3>Tri</h3>
+            <p>
+              Les matériaux sont triés selon leur type et leur qualité pour
+              optimiser le processus de recyclage.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">3</div>
+            <h3>Transformation</h3>
+            <p>
+              Nous utilisons des machines spécialisées pour transformer les
+              déchets en nouvelles matières premières.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">4</div>
+            <h3>Commercialisation</h3>
+            <p>
+              Les matériaux recyclés sont vendus à des entreprises qui les
+              utilisent pour fabriquer de nouveaux produits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contactez-nous</h2>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Informations de contact</h3>
+            <p>
+              <strong>Adresse :</strong> zone industrielle ouad smar dar el
+              beida
+            </p>
+            <p><strong>Téléphone :</strong> 05 57 59 55 45</p>
+            <p><strong>Email :</strong> camdyl@gmail.com</p>
+            <p><strong>Horaires :</strong> Lun - Ven : 9h00 - 18h00</p>
+
+            <h3 style="margin-top: 30px">Points de collecte partenaires</h3>
+            <p>
+              Nous collaborons avec de nombreux supermarchés et centres
+              commerciaux pour faciliter le dépôt de vos plastiques. Consultez
+              notre carte en ligne pour trouver le point le plus proche de chez
+              vous.
+            </p>
+          </div>
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Sujet</label>
+                <input type="text" id="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+              </div>
+              <button type="submit" class="btn">Envoyer le message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Camdyl</h3>
+            <p>
+              Entreprise leader dans le domaine du recyclage, engagée pour un
+              avenir plus durable.
+            </p>
+            <div class="social-links">
+              <a href="#">FB</a>
+              <a href="#">TW</a>
+              <a href="#">IG</a>
+              <a href="#">LI</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Liens rapides</h3>
+            <ul>
+              <li><a href="#accueil">Accueil</a></li>
+              <li><a href="#apropos">À propos</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#points">Points de collecte</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Nos services</h3>
+            <ul>
+              <li><a href="#">Recyclage du plastique</a></li>
+              <li><a href="#">Transformation de la laine</a></li>
+              <li><a href="#">Recyclage des déchets de construction</a></li>
+              <li><a href="#">Points de collecte</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul>
+              <li>123 Rue du Recyclage, 75000 Paris</li>
+              <li>+33 1 23 45 67 89</li>
+              <li>contact@camdyl.fr</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Camdyl. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Script simple pour le menu mobile
+      document
+        .querySelector(".mobile-menu")
+        .addEventListener("click", function () {
+          document.querySelector("nav ul").classList.toggle("show");
+        });
+
+      // Animation simple au défilement
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav ul li a");
+
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 300) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").substring(1) === current) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
